@@ -8,7 +8,7 @@ import tempfile
 import shutil
 
 # Initialize OpenAI and GitHub clients
-github_token = os.getenv('GITHUB_TOKEN')
+github_token = os.getenv('GHTOKEN')
 repo_name = os.getenv('REPO_NAME')
 issue_number = int(os.getenv('ISSUE_NUMBER'))
 
