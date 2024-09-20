@@ -1,12 +1,13 @@
 import os
-import openai
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 from github import Github
 from git import Repo
 import tempfile
 import shutil
 
 # Initialize OpenAI and GitHub clients
-openai.api_key = os.getenv('OPENAI_API_KEY')
 github_token = os.getenv('GITHUB_TOKEN')
 repo_name = os.getenv('REPO_NAME')
 issue_number = int(os.getenv('ISSUE_NUMBER'))
@@ -28,12 +29,10 @@ Issue Description:
 Provide the code changes needed to address this issue.
 """
 
-response = openai.Completion.create(
-    engine="gpt-3.5-turbo",
-    prompt=prompt,
-    max_tokens=800,
-    temperature=0
-)
+response = client.completions.create(engine="gpt-3.5-turbo",
+prompt=prompt,
+max_tokens=800,
+temperature=0)
 
 code_changes = response.choices[0].text.strip()
 
