@@ -7,7 +7,7 @@ import shutil
 
 # Initialize OpenAI and GitHub clients
 openai.api_key = os.getenv('OPENAI_API_KEY')
-github_token = os.getenv('GITHUB_TOKEN')  # Ensure correct environment variable
+github_token = os.getenv('GHTOKEN')  # Ensure correct environment variable
 repo_name = os.getenv('REPO_NAME')
 issue_number = int(os.getenv('ISSUE_NUMBER'))
 
